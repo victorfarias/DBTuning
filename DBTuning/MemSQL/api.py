@@ -1,7 +1,9 @@
+from subprocess import call
+
 import sh
 
-from subprocess import call
 from ..utils import paths
+
 
 class MemSQLAdmin(object):
 
@@ -18,15 +20,11 @@ class MemSQLAdmin(object):
                         "transaction_buffer"]
 
     def start(self):
-        call([paths.OPS_PATH, "start"])
-        
+        return call([paths.OPS_PATH, "start"])
+
     def stop(self):
-        call([paths.OPS_PATH, "stop"])
-
-    def set_param(key, value):
-        pass        
+        return call([paths.OPS_PATH, "stop"])
 
 
-
-
-    
+    def set_param(self, key, value):
+        return call([paths.OPS_PATH, "memsql-update-config", "--key", key, "--value", value, "--set-global", "--all"])

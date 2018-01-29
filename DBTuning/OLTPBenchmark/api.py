@@ -13,4 +13,9 @@ class OLTPBenchmark(object):
     
     def load(self, db, config_path):
         with cd(paths.OLTP_BIN_DIR):
-            call(["./oltpbenchmark", "-b", db, "-c", config_path, "--create=true", "--load=true"])
+           return call(["./oltpbenchmark", "-b", db, "-c", config_path, "--create=true", "--load=true"])
+
+    def run(self,db, config_path):
+        with cd(paths.OLTP_BIN_DIR):
+            return call(["./oltpbenchmark", "-b", db, "-c", config_path, "--execute=true", "-s", "5", "-o", "out"])
+        
