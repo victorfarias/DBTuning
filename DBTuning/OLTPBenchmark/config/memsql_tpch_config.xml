@@ -17,23 +17,26 @@
     <fileFormat>tbl</fileFormat>
     
     <!-- This setting doesn't do anything here -->
-    <scalefactor>2</scalefactor>
+    <scalefactor>1</scalefactor>
 
     <!-- The workload -->
-    <terminals>1</terminals>
+    <terminals>50</terminals>
     <works>
         <work>
-          <serial>true</serial>
+          <time>20</time>
+          <serial>false</serial>
           <rate>unlimited</rate>
           <weights>all</weights>
         </work>
         <work>
-          <serial>true</serial>
+          <time>20</time>
+          <serial>false</serial>
           <rate>unlimited</rate>
           <weights>even</weights>
         </work>
         <work>
-          <serial>true</serial>
+          <time>20</time>
+          <serial>false</serial>
           <rate>unlimited</rate>
           <weights>odd</weights>
         </work>

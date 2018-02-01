@@ -3,5 +3,5 @@ from DBTuning.MemSQL.install import install as install_mem
 
 
 if __name__ == "__main__":
+    install_OLTP()
     install_mem()
-    # install_OLTP()

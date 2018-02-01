@@ -18,9 +18,7 @@ def install():
 
     call(["tar","zxvf", paths.MEM_TAR, '-C', paths.BIN_DIR])
     
-    call([paths.OPS_PATH,"start"])
-
-    
+    call([paths.OPS_PATH,"start"])    
 
     print
     print "Follow to http://localhost:9000 to complete installation"

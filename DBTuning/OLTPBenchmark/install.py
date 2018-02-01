@@ -6,10 +6,11 @@ from ..utils import paths
 def install():
     print
     print "Getting OLTPBenchmark"
-    call(["git", "clone", "https://github.com/victorfarias/oltpbench.git", paths.OLTP_BIN_DIR])
-
+    call(["git", "clone", "https://github.com/AjayBenno/oltpbench.git", paths.OLTP_BIN_DIR])
+    
     os.chdir(paths.OLTP_BIN_DIR)
 
+    call(["git", "checkout", "tpch"])
     print
     print "Building OLPTBenchmark"
     call(["ant"])
