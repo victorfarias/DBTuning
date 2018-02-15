@@ -4,21 +4,21 @@
     <!-- Connection details -->
     <dbtype>memsql</dbtype>
     <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://127.0.0.1:3306/tpcc</DBUrl>
+    <DBUrl>jdbc:mysql://10.102.21.68:3306/tpcc</DBUrl>
     <username>root</username>
     <!--<password></password>-->
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
     
     <!-- Scale factor is the number of warehouses in TPCC -->
-    <scalefactor>15</scalefactor>
+    <scalefactor>50</scalefactor>
     
     <!-- The workload -->
-    <terminals>50</terminals>
+    <terminals>30</terminals>
     <works>
         <work>
-          <time>180</time>
+          <time>30</time>
           <rate>unlimited</rate>
-          <weights>0,25,25,25,25</weights>
+          <weights>0,0,0,0,100</weights>
         </work>
     </works>
 	

@@ -4,7 +4,7 @@
     <!-- Connection details -->
     <dbtype>memsql</dbtype>
     <driver>com.mysql.jdbc.Driver</driver>
-    <DBUrl>jdbc:mysql://127.0.0.1:3306/tpch</DBUrl>
+    <DBUrl>jdbc:mysql://10.102.21.68:3306/tpch</DBUrl>
     <username>root</username>
     <!--<password>pass</password>-->
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
@@ -20,17 +20,17 @@
     <scalefactor>1</scalefactor>
 
     <!-- The workload -->
-    <terminals>50</terminals>
+    <terminals>3</terminals>
     <works>
-        <work>
-          <time>20</time>
-          <serial>false</serial>
+        <!-- <work> -->
+          <!-- <time>20</time>
+          <serial>true</serial>
           <rate>unlimited</rate>
           <weights>all</weights>
         </work>
-        <work>
-          <time>20</time>
-          <serial>false</serial>
+        <work> -->
+          <!-- <time>20</time> -->
+          <!-- <serial>false</serial>
           <rate>unlimited</rate>
           <weights>even</weights>
         </work>
@@ -39,6 +39,12 @@
           <serial>false</serial>
           <rate>unlimited</rate>
           <weights>odd</weights>
+        </work> -->
+        <work>        
+          <time>60</time>
+          <serial>false</serial>
+          <rate>unlimited</rate>
+          <weights>my</weights>
         </work>
     </works>
 
@@ -47,6 +53,10 @@
             <grouping>
                 <name>odd</name>
                 <weights>1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0</weights>
+            </grouping>
+            <grouping>
+                <name>my</name>
+                <weights>1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1</weights>
             </grouping>
             <grouping>
                 <name>even</name>

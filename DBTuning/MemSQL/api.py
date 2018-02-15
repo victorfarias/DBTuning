@@ -1,9 +1,6 @@
 from subprocess import call
 
-import sh
-
 from ..utils import paths
-
 
 class MemSQLAdmin(object):
 

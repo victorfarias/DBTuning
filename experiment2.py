@@ -19,7 +19,7 @@ def restart():
     print mem_admin.set_param("multi_insert_tuple_count", "400000")  
     print mem_admin.set_param("max_prepared_stmt_count", "1000000")  
     print mem_admin.set_param("plan_expiration_minutes", "2000")  
-        
+    
     mem_admin.stop()
     mem_admin.start()
 
@@ -33,6 +33,6 @@ def stop():
 
 if __name__ == "__main__":
     # stop()
-    load()
+    # load()
     # restart()
-    # run() 
+    run() 

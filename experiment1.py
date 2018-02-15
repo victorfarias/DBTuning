@@ -38,7 +38,6 @@ def restart():
 def load():
     oltp = OLTPBenchmark()    
     print oltp.load("tpcc", os.path.abspath("/home/victor/DBTuning/DBTuning/OLTPBenchmark/config/memsql_tpcc_config.xml"))        
-    pass    
 
 def stop():
     mem_admin = MemSQLAdmin()
@@ -46,7 +45,7 @@ def stop():
     
 
 if __name__ == "__main__":
-    stop()
+    # stop()
     # load()
     # restart()
-    # run() 
+    run() 
