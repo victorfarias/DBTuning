@@ -25,3 +25,4 @@ class DummyDB(object):
 
     def collect_metric(self):
         return self.params['param1']**2
+        
