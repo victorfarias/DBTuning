@@ -1,16 +1,65 @@
 import GPyOpt
+import numpy as np
+
+from datetime import datetime
+
 
 class Optimizer(object):
 
     def __init__(self, db):
         self.db = db
 
-    def run_optimization(self):
 
-        bo_step = GPyOpt.methods.BayesianOptimization(f = None, domain = self.db.domain, X = np.array([[]]), Y = np.array([]))
-        x_next = bo_step.suggest_next_locations()
+    def _get_random_values(self):
+        v = [np.random.uniform(low=param['domain'][0], high=param['domain'][1]) for param in self.db.domain]
+        return np.array(v)
+
+    
+
+    def run_optimization(self):
+    
+        values = self._get_random_values()
+        self.db.set_params_vector(values)
+        target = self.db.collect_metric()
+
+        X = np.array([values])
+        Y = np.array([[target]])
         
-                
+        values = self._get_random_values()
+        self.db.set_params_vector(values)
+        target = self.db.collect_metric()
+
+        X = np.r_[X,[values]]
+        Y = np.r_[Y, [[target]]]
+
+        for i in range(5000):
+
+            a = datetime.now()
+
+            bo_step = GPyOpt.methods.BayesianOptimization(f = None, domain = self.db.domain, X = X, Y = Y, model_type='sparseGP')
+            if i%100 == 0:
+                x_next = bo_step.suggest_next_locations()
+            else:
+                x_next = np.array([self._get_random_values()])
+            self.db.set_params_vector(x_next[0])
+            target = self.db.collect_metric()
+
+            b = datetime.now()
+            
+            
+            X = np.r_[X, x_next]
+            Y = np.r_[Y, [[target]]]
+
+            if i%100 == 0:         
+                print (X.shape)
+                print (Y.shape)
+                print (x_next)
+                print (target)
+                print (b-a)
+
+
+        exit(0)
+
         # X_init = np.array([[0.0],[0.5],[1.0]])
         # Y_init = func.f(X_init)
 
